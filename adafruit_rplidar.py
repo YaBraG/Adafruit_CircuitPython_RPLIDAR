@@ -227,7 +227,7 @@ class RPLidar:
         """Starts sensor motor"""
         self.log("info", "Starting motor")
         # For A1
-        self._control_motor(True)
+        # self._control_motor(True)
 
         # For A2
         self.set_pwm(DEFAULT_MOTOR_PWM)
@@ -240,8 +240,8 @@ class RPLidar:
         self.set_pwm(0)
         time.sleep(0.001)
         # For A1
-        self._control_motor(False)
-        self.motor_running = False
+        # self._control_motor(False)
+        # self.motor_running = False
 
     def _send_payload_cmd(self, cmd: bytes, payload: bytes) -> None:
         """Sends `cmd` command with `payload` to the sensor"""
