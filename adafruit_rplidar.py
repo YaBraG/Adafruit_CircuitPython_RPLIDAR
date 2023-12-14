@@ -83,7 +83,8 @@ _SCAN_TYPES = (
     {"byte": b"\x82", "response": 130, "size": 84},
 )
 
-express_packet = namedtuple("express_packet", "distance angle new_scan start_angle")
+express_packet = namedtuple(
+    "express_packet", "distance angle new_scan start_angle")
 
 
 class RPLidarException(Exception):
@@ -158,7 +159,7 @@ class RPLidar:
         """
         motor_pin: DigitalInOut
         self.motor_pin = motor_pin
-        self.motor_pin.value=12
+        self.motor_pin.value = 12
         self.port = port
         self.baudrate = baudrate
         self.timeout = timeout
@@ -252,6 +253,8 @@ class RPLidar:
         for v in struct.unpack("B" * len(req), req):
             checksum ^= v
         req += struct.pack("B", checksum)
+
+        print("HERE: ", self._serial_port)
         self._serial_port.write(req)
         self.log_bytes("debug", "Command sent: ", req)
 
@@ -300,7 +303,8 @@ class RPLidar:
             raise RPLidarException("Wrong response data type")
         raw = self._read_response(dsize)
         serialnumber_bytes = struct.unpack("B" * len(raw[4:]), raw[4:])
-        serialnumber = "".join(reversed(["%02x" % b for b in serialnumber_bytes]))
+        serialnumber = "".join(
+            reversed(["%02x" % b for b in serialnumber_bytes]))
         data = {
             "model": raw[0],
             "firmware": (raw[2], raw[1]),
@@ -341,7 +345,8 @@ class RPLidar:
     def clear_input(self) -> None:
         """Clears input buffer by reading all available data"""
         if self.scanning:
-            raise RPLidarException("Clearing not allowed during active scanning!")
+            raise RPLidarException(
+                "Clearing not allowed during active scanning!")
         self._serial_port.flushInput()
         self.express_frame = 32
         self.express_data = False
@@ -375,7 +380,8 @@ class RPLidar:
         elif status == _HEALTH_STATUSES[1]:
             self.log(
                 "warning",
-                "Warning sensor status detected! " "Error code: %d" % (error_code),
+                "Warning sensor status detected! " "Error code: %d" % (
+                    error_code),
             )
         cmd = _SCAN_TYPES[scan_type]["byte"]
         self.log("info", "starting scan process in %s mode" % scan_type)
@@ -453,7 +459,8 @@ class RPLidar:
                     self.log(
                         "warning",
                         "Too many measurements in the input buffer: %d/%d. "
-                        "Clearing buffer..." % (data_in_buf // dsize, max_buf_meas),
+                        "Clearing buffer..." % (
+                            data_in_buf // dsize, max_buf_meas),
                     )
                     self._serial_port.read(data_in_buf // dsize * dsize)
             if self.scan_type == SCAN_TYPE_NORMAL:
@@ -575,7 +582,8 @@ class ExpressPacket(express_packet):
         for i in range(0, 80, 5):
             d += ((packet[i + 4] >> 2) + (packet[i + 5] << 6),)
             a += (
-                ((packet[i + 8] & 0b00001111) + ((packet[i + 4] & 0b00000001) << 4))
+                ((packet[i + 8] & 0b00001111) +
+                 ((packet[i + 4] & 0b00000001) << 4))
                 / 8
                 * cls.sign[(packet[i + 4] & 0b00000010) >> 1],
             )
