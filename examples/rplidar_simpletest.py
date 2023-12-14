@@ -7,7 +7,7 @@ from adafruit_rplidar import RPLidar
 
 # Setup the RPLidar
 PORT_NAME = "/dev/ttyS0"
-lidar = RPLidar(None, PORT_NAME, timeout=3,logging=True)
+lidar = RPLidar(None, PORT_NAME, timeout=3)
 
 # used to scale data to fit on the screen
 max_distance = 0
