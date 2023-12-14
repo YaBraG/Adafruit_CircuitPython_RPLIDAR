@@ -228,7 +228,7 @@ class RPLidar:
         """Starts sensor motor"""
         self.log("info", "Starting motor")
         # For A1
-        self._control_motor(True)
+        # self._control_motor(True)
 
         # For A2
         self.set_pwm(DEFAULT_MOTOR_PWM)
@@ -241,25 +241,25 @@ class RPLidar:
         self.set_pwm(0)
         time.sleep(0.001)
         # For A1
-        self._control_motor(False)
-        self.motor_running = False
+        # self._control_motor(False)
+        # self.motor_running = False
 
-    # def _send_payload_cmd(self, cmd: bytes, payload: bytes) -> None:
-    #     """Sends `cmd` command with `payload` to the sensor"""
-    #     size = struct.pack("B", len(payload))
-    #     req = SYNC_BYTE + cmd + size + payload
-    #     checksum = 0
-    #     for v in struct.unpack("B" * len(req), req):
-    #         checksum ^= v
-    #     req += struct.pack("B", checksum)
-    #     self._serial_port.write(req)
-    #     self.log_bytes("debug", "Command sent: ", req)
+    def _send_payload_cmd(self, cmd: bytes, payload: bytes) -> None:
+        """Sends `cmd` command with `payload` to the sensor"""
+        size = struct.pack("B", len(payload))
+        req = SYNC_BYTE + cmd + size + payload
+        checksum = 0
+        for v in struct.unpack("B" * len(req), req):
+            checksum ^= v
+        req += struct.pack("B", checksum)
+        self._serial_port.write(req)
+        self.log_bytes("debug", "Command sent: ", req)
 
-    # def _send_cmd(self, cmd: bytes) -> None:
-    #     """Sends `cmd` command to the sensor"""
-    #     req = SYNC_BYTE + cmd
-    #     self._serial_port.write(req)
-    #     self.log_bytes("debug", "Command sent: ", req)
+    def _send_cmd(self, cmd: bytes) -> None:
+        """Sends `cmd` command to the sensor"""
+        req = SYNC_BYTE + cmd
+        self._serial_port.write(req)
+        self.log_bytes("debug", "Command sent: ", req)
 
     def _read_descriptor(self) -> Tuple[int, bool, int]:
         """Reads descriptor packet"""
