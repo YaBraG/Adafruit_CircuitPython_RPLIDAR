@@ -10,7 +10,7 @@ from digitalio import DigitalInOut
 
 # Setup the RPLidar
 PORT_NAME = UART
-lidar = RPLidar(18, PORT_NAME, 115200, timeout=3)
+lidar = RPLidar(value, PORT_NAME, 115200, timeout=3)
 
 
 # used to scale data to fit on the screen
