@@ -4,20 +4,12 @@
 
 from math import floor
 from adafruit_rplidar import RPLidar
-from busio import UART
-from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
-from digitalio import DigitalInOut
-import board
-motor_pin = DigitalInOut(board.D18)
 
 # Setup the RPLidar
-# PORT_NAME = "/dev/ttyUSB0"
-PORT_NAME = "/dev/ttyS0"
-lidar = RPLidar(None, PORT_NAME, timeout=3, logging=True)
+PORT_NAME = "/dev/ttyUSB0"
+lidar = RPLidar(None, PORT_NAME, timeout=3)
 
-
-# used to sc
-# ale data to fit on the screen
+# used to scale data to fit on the screen
 max_distance = 0
 
 
