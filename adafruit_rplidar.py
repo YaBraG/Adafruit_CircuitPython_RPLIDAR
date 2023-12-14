@@ -167,7 +167,7 @@ class RPLidar:
         self.logging = logging
 
         self.is_CP = not isinstance(port, str)
-
+        print("PORT: ", port)
         if self.is_CP:
             print("set serial port")
             self._serial_port = port
