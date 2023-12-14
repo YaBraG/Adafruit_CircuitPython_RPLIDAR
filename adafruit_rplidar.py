@@ -136,7 +136,6 @@ class RPLidar:
 
     def __init__(
         self,
-        motor_pin: DigitalInOut,
         port: UART,
         baudrate: int = 115200,
         timeout: float = 1,
@@ -157,7 +156,9 @@ class RPLidar:
         logging : bool, optional
             Whether to output logging information
         """
+        motor_pin: DigitalInOut
         self.motor_pin = motor_pin
+        self.motor_pin.value=12
         self.port = port
         self.baudrate = baudrate
         self.timeout = timeout
