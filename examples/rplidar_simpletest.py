@@ -11,7 +11,7 @@ from digitalio import DigitalInOut
 import board
 import microcontroller
 print("THIS THING")
-print(dir(microcontroller.pin))
+print(dir(microcontroller.pin.GPIO))
 motor_pin = DigitalInOut(board["12"])
 # motor_pin.value = 12
 # Setup the RPLidar
