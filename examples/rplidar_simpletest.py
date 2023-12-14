@@ -13,7 +13,9 @@ import microcontroller
 
 motor_pin = digitalio.DigitalInOut(board.D18)
 motor_pin.direction = digitalio.Direction.OUTPUT
+motor_pin.value = False
 # motor_pin.value = 12
+
 # Setup the RPLidar
 PORT_NAME = busio.UART
 lidar = RPLidar(motor_pin, PORT_NAME, 115200, timeout=3)
