@@ -4,9 +4,10 @@
 
 from math import floor
 from adafruit_rplidar import RPLidar
+from busio import UART
 
 # Setup the RPLidar
-PORT_NAME = busio.UART
+PORT_NAME = UART
 lidar = RPLidar(None, PORT_NAME, timeout=3)
 
 # used to scale data to fit on the screen
