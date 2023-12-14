@@ -12,7 +12,7 @@ motor_pin.value = 12
 
 # Setup the RPLidar
 PORT_NAME = UART
-print(RPLidar)
+print("THIS: ", RPLidar._serial_port)
 lidar = RPLidar(PORT_NAME, 115200, timeout=3)
 
 
