@@ -157,6 +157,7 @@ class RPLidar:
         logging : bool, optional
             Whether to output logging information
         """
+        print("JUST STARTED")
         motor_pin: DigitalInOut
         self.motor_pin = motor_pin
         self.motor_pin.value = 12
