@@ -10,7 +10,7 @@ import busio
 from digitalio import DigitalInOut
 import board
 print("THIS THING")
-print(board.GPIO18())
+print(board.__dict__)
 motor_pin = DigitalInOut(board.GPIO18())
 # motor_pin.value = 12
 # Setup the RPLidar
