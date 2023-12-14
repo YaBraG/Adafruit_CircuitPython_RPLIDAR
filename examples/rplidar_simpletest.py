@@ -17,7 +17,8 @@ motor_pin.value = False
 # motor_pin.value = 12
 
 # Setup the RPLidar
-PORT_NAME = busio.UART
+PORT_NAME = busio.UART(board.RX, board.TX, 115200)
+
 lidar = RPLidar(motor_pin, PORT_NAME, 115200, timeout=3)
 
 
