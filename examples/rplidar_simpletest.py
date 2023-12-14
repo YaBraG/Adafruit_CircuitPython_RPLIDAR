@@ -11,8 +11,9 @@ import board
 motor_pin = DigitalInOut(board.D18)
 
 # Setup the RPLidar
-PORT_NAME = "/dev/ttyS0"
-lidar = RPLidar(motor_pin, PORT_NAME, timeout=3)
+PORT_NAME = "/dev/ttyUSB0"
+# PORT_NAME = "/dev/ttyS0"
+lidar = RPLidar(None, PORT_NAME, timeout=3, logging=True)
 
 # used to scale data to fit on the screen
 max_distance = 0
