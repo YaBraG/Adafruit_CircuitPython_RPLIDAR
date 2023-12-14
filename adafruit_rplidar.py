@@ -169,6 +169,7 @@ class RPLidar:
         self.is_CP = not isinstance(port, str)
 
         if self.is_CP:
+            print("set serial port")
             self._serial_port = port
         else:
             global serial  # pylint: disable=global-statement
