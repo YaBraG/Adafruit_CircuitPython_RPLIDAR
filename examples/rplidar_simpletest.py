@@ -5,6 +5,8 @@
 from math import floor
 from adafruit_rplidar import RPLidar
 from busio import UART
+from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
+from digitalio import DigitalInOut
 
 # Setup the RPLidar
 PORT_NAME = UART
