@@ -123,9 +123,9 @@ def _process_express_scan(
 class RPLidar:
     """Class for communicating with RPLidar rangefinder scanners"""
 
+    motor_pin = None  #: DigitalInOut instance controlling the motor
     _serial_port = None  #: Serial port (or UART) instance
     port = None  #: Serial port name, e.g. /dev/ttyUSB0
-    motor_pin = None  #: DigitalInOut instance controlling the motor
     timeout = 1  #: Serial port timeout
     motor = False  #: Is motor running?
     baudrate = 115200  #: Baudrate for serial port
@@ -138,8 +138,8 @@ class RPLidar:
 
     def __init__(
         self,
-        port: UART,
         motor_pin: DigitalInOut(board.D18),
+        port: UART,
         baudrate: int = 115200,
         timeout: float = 1,
         logging: bool = False,
