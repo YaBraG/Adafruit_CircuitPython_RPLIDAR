@@ -230,6 +230,7 @@ class RPLidar:
         self.log("info", "Starting motor")
         # For A1
         # self._control_motor(True)
+        print("HERE-2: ", self._serial_port)
 
         # For A2
         self.set_pwm(DEFAULT_MOTOR_PWM)
