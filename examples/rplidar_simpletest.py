@@ -7,11 +7,11 @@ from adafruit_rplidar import RPLidar
 import busio
 # from busio import UART
 # from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
-# from digitalio import DigitalInOut
-
+from digitalio import DigitalInOut
+motor_pin = DigitalInOut(12)
 # Setup the RPLidar
 PORT_NAME = busio.UART
-lidar = RPLidar(12, PORT_NAME, 115200, timeout=3)
+lidar = RPLidar(motor_pin, PORT_NAME, 115200, timeout=3)
 
 
 # used to scale data to fit on the screen
