@@ -7,7 +7,7 @@ from adafruit_rplidar import RPLidar
 from busio import UART
 from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
 from digitalio import DigitalInOut
-
+value = True
 # Setup the RPLidar
 PORT_NAME = UART
 lidar = RPLidar(value, PORT_NAME, 115200, timeout=3)
