@@ -9,8 +9,10 @@ import busio
 # from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
 from digitalio import DigitalInOut
 import board
+import microcontroller
 print("THIS THING")
 print(board.__dict__)
+print(dir(microcontroller.pin))
 motor_pin = DigitalInOut(board["12"])
 # motor_pin.value = 12
 # Setup the RPLidar
