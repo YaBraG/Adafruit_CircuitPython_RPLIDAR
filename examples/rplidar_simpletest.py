@@ -11,7 +11,7 @@ import busio
 
 # Setup the RPLidar
 PORT_NAME = busio.UART
-lidar = RPLidar(None, PORT_NAME, 115200, timeout=3)
+lidar = RPLidar(12, PORT_NAME, 115200, timeout=3)
 
 
 # used to scale data to fit on the screen
