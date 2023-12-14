@@ -164,13 +164,13 @@ class RPLidar:
         self.motor_running = False
         self.logging = logging
 
-        self.is_CP = not isinstance(port, str)
+        # self.is_CP = not isinstance(port, str)
 
-        if self.is_CP:
-            _serial_port = port
-        else:
-            global serial  # pylint: disable=global-statement
-            import serial  # pylint: disable=import-outside-toplevel
+        # if self.is_CP:
+        self._serial_port = port
+        # else:
+        #     global serial  # pylint: disable=global-statement
+        #     import serial  # pylint: disable=import-outside-toplevel
 
         self.connect()
         self.start_motor()
