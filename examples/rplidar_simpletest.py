@@ -8,8 +8,8 @@ import busio
 # from busio import UART
 # from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
 from digitalio import DigitalInOut
-motor_pin = DigitalInOut
-motor_pin.value = 12
+import board
+motor_pin = DigitalInOut(board.GPIO18)
 # Setup the RPLidar
 PORT_NAME = busio.UART
 lidar = RPLidar(motor_pin, PORT_NAME, 115200, timeout=3)
