@@ -279,8 +279,8 @@ class RPLidar:
         data = self._serial_port.read(dsize)
         self.log_bytes("debug", "Received data:", data)
 
-        # if len(data) != dsize:
-        #     raise RPLidarException("Wrong body size")
+        if len(data) != dsize:
+            raise RPLidarException("Wrong body size")
         return data
 
     @property
