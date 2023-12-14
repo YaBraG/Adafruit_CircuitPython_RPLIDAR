@@ -7,12 +7,12 @@ from adafruit_rplidar import RPLidar
 import busio
 # from busio import UART
 # from typing import Tuple, Dict, Any, Optional, List, Iterator, Union
-from digitalio import DigitalInOut
+import digitalio
 import board
 import microcontroller
-print("THIS THING")
-print(dir(microcontroller.pin.GPIO18))
-motor_pin = DigitalInOut(microcontroller.pin.GPIO18)
+
+motor_pin = digitalio.DigitalInOut(board.D18)
+motor_pin.direction = digitalio.Direction.OUTPUT
 # motor_pin.value = 12
 # Setup the RPLidar
 PORT_NAME = busio.UART
